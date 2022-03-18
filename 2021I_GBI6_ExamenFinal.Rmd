@@ -148,7 +148,14 @@ Para esta pregunta tiene que utilizar la data ```df_long```.
 ```{r}
 # Escriba el código para crear la función tcga_boxplots
 
+library(ggplot2)
 
+tcga_boxplots <- function(dataset) {
+  library(ggplot2)
+  return(ggplot (dataset, aes(x = gen, y = expresion_level, col = gen)) + labs(x="Gen", y = "Expression level")
+         + geom_boxplot() + geom_jitter(size=0.10))
+}
+tcga_boxplots(df_long)
 ```
 
 ### [0.5 PUNTOS] 2.2 Utilizando la función ```lapply()``` genera la lista ```cancertype_boxplots``` con las gráficas para cada tipo de cancer (cada tipo de dataset). 
